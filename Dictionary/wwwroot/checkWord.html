@@ -1,0 +1,263 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Проверка</title>
+</head>
+<body>
+    <div class="head">
+    <h1 >Выберете какие слова нужно проверить:</h1>
+     </div>
+    <script>
+        async function get() {
+            const response = await fetch("api/checkWord/get", {
+                method: "GET",
+                headers: { "Accept": "application/json" }
+            })
+            if (response.ok === true) {
+                const words = await response.json();
+                const rows = document.querySelector("body");
+                
+                rows.append(row(sort(words)));
+
+                const button = document.createElement("button");
+                button.append("Вернуться на главную");
+                button.addEventListener("click", e => {
+                    e.preventDefault();
+                    window.location.href = "home.html";
+                })
+                rows.append(button);
+            }
+        }
+
+        function sort(words) {
+            const array = Array.from(words);
+            var temp;
+            for (let i = 0; i < array.length; i++) {
+                for (let j = i + 1; j < array.length; j++) {
+                    if (array[i].id > array[j].id) {
+                        temp = array[i];
+                        array[i] = array[j];
+                        array[j] = temp;
+                    }
+                }
+            }
+            return array
+        }
+
+        async function post(array) {
+            
+            const response = await fetch("api/checkWord/set", {
+                method: "POST",
+                headers: { "Accept": "application/json", "Content-Type": "application/json" },
+                body: JSON.stringify(array)
+            })
+            if (response.ok === true) {
+                const words = await response.json();
+                const rows = document.querySelector("body");
+                const form = document.forms["form"];
+                form.remove();
+                const but = document.querySelectorAll("button");
+                but.forEach(b => b.remove());
+                rows.append(rowCheck(words));
+
+                const button = document.createElement("button");
+                button.append("Вернуться на главную");
+                button.setAttribute("class","come")
+                button.addEventListener("click", e => {
+                    e.preventDefault();
+                    window.location.href = "home.html";
+                })
+                rows.append(button);
+            }
+
+        }
+
+        async function checkPost(array) {
+
+            const response = await fetch("api/checkWord/check", {
+                method: "POST",
+                headers: { "Accept": "application/json", "Content-Type": "application/json" },
+                body: JSON.stringify(array)
+            })
+            if (response.ok === true) {
+                const words = await response.json();
+                const rows = document.querySelector("body");
+
+                if (!words.length == 0) {
+                    var head = document.querySelector("div");
+                    head.remove();
+
+                    const come = document.querySelector("button.come");
+                    come.remove();
+
+                    const div = document.createElement("div");
+                    const h1 = document.createElement("h1");
+                    h1.append("Вы допустили ошибки в следующих словах:");
+                    div.append(h1);
+
+                    const form = document.forms["checkform"];
+                    form.remove();
+                    rows.append(div);
+
+                    words.forEach(word =>
+                        rows.append(finalCheck(word)));
+
+                    const button = document.createElement("button");
+                    button.append("Пройти проверку занаво");
+
+                    button.addEventListener("click", e => {
+                        e.preventDefault();
+                        const allDiv = document.querySelectorAll("div");
+                        allDiv.forEach(d => d.remove());
+                        const divMain = document.createElement("div");
+                        const hAgain = document.createElement("h1");
+                        hAgain.append("Выберете какие слова нужно проверить:");
+                        divMain.append(hAgain);
+                        rows.append(divMain);
+                        get();
+                        button.remove();
+                    })
+
+                    rows.append(button);
+
+                }
+
+                else {
+                    var head = document.querySelector("div");
+                    head.remove();
+
+                    const come = document.querySelector("button.come");
+                    come.remove();
+
+                    const div = document.createElement("div");
+                    const h1 = document.createElement("h1");
+                    h1.append("Поздравляем у вас нет ошибок");
+                    div.append(h1);
+
+                    const form = document.forms["checkform"];
+                    form.remove();
+
+                    rows.append(div);
+
+                    const backMain = document.createElement("button");
+                    backMain.append("Вернуться на главную");
+                    backMain.addEventListener("click", e => {
+                        e.preventDefault();
+                        window.location.href = "home.html";
+                    })
+
+                    rows.append(backMain);
+
+                }
+            }
+            
+        }
+
+            function finalCheck(word) {
+                const div = document.createElement("div");
+                const h2 = document.createElement("h2")
+            var wordVis = word.rusWord
+            h2.append(wordVis);
+                div.append(h2);
+                
+
+            return div;
+        }
+
+        function rowCheck(words) {
+            const set = new Set();
+            const form = document.createElement("form");
+            form.setAttribute("name", "checkform")
+            form.setAttribute("autocomplete","off")
+            const p = document.createElement("p");
+            let array = new Array();
+            
+            words.forEach(word => {
+
+                const inputE = document.createElement("input");
+                inputE.setAttribute("type", "text");
+                inputE.setAttribute("name", word.engWord);
+
+                const pIn = document.createElement("p");
+                let RusWord = word.rusWord + " - ";
+
+                pIn.append(RusWord);
+                pIn.append(inputE);
+
+                p.append(pIn);
+                
+            })
+            const button = document.createElement("button");
+            button.append("Проверить");
+            button.addEventListener("click", e => {
+                e.preventDefault();
+                words.forEach(word => {
+                
+                    let Id = word.id;
+                    let EngWord = form.elements[word.engWord].value;
+                    var serializ = Id + ")" + EngWord;
+                    set.add(serializ);
+                    array = Array.from(set);
+                })
+                checkPost(array);
+            })
+
+            form.append(p);
+            form.append(button)
+            return form;
+        }
+
+
+        function row(words) {
+            const set = new Set();
+            const form = document.createElement("form");
+            form.setAttribute("name", "form");
+            
+            const inputAll = document.createElement("button");
+            inputAll.append("Выбрать все")
+            inputAll.addEventListener("click", e => {
+                e.preventDefault();
+                words.forEach(word => {
+                    set.add(word.id)
+                    
+                });
+                const array = Array.from(set);
+                post(array);
+
+            })
+            form.append(inputAll);
+                words.forEach(word => {
+                    const p = document.createElement("p");
+                    const input = document.createElement("input");
+                    input.setAttribute("class", word.engWord);
+                    input.setAttribute("type", "checkbox");
+                    input.setAttribute("value", word.id);
+                    input.addEventListener("click", e => {
+                        set.add(word.id);
+                        e.target.checked;
+                        
+                    })
+                    p.append(input);
+                    p.append(word.id + ") " + word.engWord);
+                    form.append(p);
+                })
+            
+            const button = document.createElement("button");
+            button.append("Выбрать");
+                button.addEventListener("click", e => {
+                    e.preventDefault();
+                    const array = Array.from(set);
+                    post(array);
+                })
+                form.append(button);
+
+                return form;
+                
+            }
+
+            get();
+
+    </script>
+</body>
+</html>

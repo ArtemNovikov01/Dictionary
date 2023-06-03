@@ -1,0 +1,209 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Словарь</title>
+</head>
+<body>
+    <h1>Словарь</h1><br/>
+                    <form name="addWord">
+                        <lable>
+                            Слово на английском:
+                        </lable>
+                        <input name="IdWord" type="hidden" value="0"/>
+
+                        <input name="EngWord" type="text" placeholder="english" autocomplete="off" required/>
+
+                        <lable>
+                            Слово на русском:
+                        </lable>
+
+                        <input name="RusWord" type="text" placeholder="По-русски" autocomplete="off" required/>
+                            
+                            <input type="submit" value="Добавить"/>
+                    </form>
+    <button class="backMain">Вернуться на главную</button>
+    <script>
+        async function get() {
+            const response = await fetch("api/dictionary", {
+                method: "GET",
+                headers: { "Accept": "application/json" }
+            })
+            if (response.ok === true) {
+                const words = await response.json();
+                const rows = document.querySelector("body");
+                const array = Array.from(words);
+                var temp;
+                for (let i = 0; i < array.length; i++) {
+                    for (let j = i + 1; j < array.length; j++) {
+                        if (array[i].id > array[j].id) {
+                            temp = array[i];
+                            array[i] = array[j];
+                            array[j] = temp;
+                        }
+                    }
+                }
+                array.forEach(word =>
+                    rows.append(row(word)))
+            }
+        }
+
+        async function post(EngName, RusName) {
+            const response = await fetch("api/dictionary", {
+                method: "POST",
+                headers: { "Accept": "application/json", "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    EngWord: EngName,
+                    RusWord: RusName
+                })
+            })
+            if (response.ok === true) {
+                const word = await response.json();
+                const rows = document.querySelector("body");
+                rows.append(row(word));
+                reset();
+            }
+        }
+
+        async function put(id, EngWord, RusWord) {
+            const response = await fetch("api/dictionary", {
+                method: "PUT",
+                headers: { "Accept": "application/json", "Content-type": "application/json" },
+                body: JSON.stringify({
+                    id: id,
+                    EngWord: EngWord,
+                    RusWord: RusWord
+                })
+            });
+            if (response.ok === true) {
+                const word = await response.json();
+                document.getElementById(word.id).replaceWith(row(word));
+            }
+        }
+
+        async function del(id) {
+            const response = await fetch("api/dictionary/"+id, {
+                method: "DELETE",
+                headers: {"Accept":"application/json"}
+            })
+            if (response.ok === true) {
+                const word = await response.json();
+                var className = word.engWord
+                const div = document.querySelector("div." + className);
+                div.remove();
+            }
+        }
+
+
+
+
+        function row(word) {
+            const div = document.createElement("div");
+            div.setAttribute("class",word.engWord)
+            const h2 = document.createElement("h4");
+            h2.setAttribute("id", word.id);
+            var wordEnRu =word.id +") " + word.engWord + " - " + word.rusWord;
+            h2.append(wordEnRu);
+            div.append(h2);
+
+            const buttonDel = document.createElement("button");
+            buttonDel.append("Удалить");
+            buttonDel.addEventListener("click", e => {
+                e.preventDefault();
+                del(word.id);
+            })
+
+            const button = document.createElement("button");
+            button.append("Редактировать")
+            button.addEventListener("click", e => {
+                e.preventDefault();
+                const form = document.createElement("form");
+                form.setAttribute("name", "editForm");
+
+                const inputId = document.createElement("input");
+                inputId.setAttribute("name", "IdWord");
+                inputId.setAttribute("type", "hidden");
+
+                const lableEng = document.createElement("lable");
+                lableEng.append("English");
+                const inputEng = document.createElement("input")
+                inputEng.setAttribute("name", "EngWord");
+                inputEng.setAttribute("type", "text");
+                inputEng.setAttribute("autocomplete", "off");
+
+                const lableRus = document.createElement("lable");
+                lableRus.append("По-русски");
+                const inputRus = document.createElement("input");
+                inputRus.setAttribute("name", "RusWord");
+                inputRus.setAttribute("type", "text");
+                inputRus.setAttribute("autocomplete", "off");
+
+                const editBut = document.createElement("button");
+                editBut.append("Изменить");
+                editBut.addEventListener("click", e => {
+                    e.preventDefault();
+                    const form = document.forms["editForm"];
+                    const IdWord = word.id;
+                    const EngWord = form.elements["EngWord"].value;
+                    const RusWord = form.elements["RusWord"].value;
+                    put(IdWord, EngWord, RusWord);
+                    form.remove()
+                })
+
+                const removeBut = document.createElement("button");
+                removeBut.append("Отмена");
+                removeBut.addEventListener("click", e => {
+                    e.preventDefault();
+                    div.append(button);
+                    form.remove();
+                });
+                const divEng = document.createElement("div");
+                divEng.append(inputId);
+                divEng.append(lableEng);
+                divEng.append(inputEng);
+
+                const divRus = document.createElement("div");
+                divRus.append(lableRus);
+                divRus.append(inputRus);
+
+                const divIn = document.createElement("div");
+                divIn.append(editBut);
+                divIn.append(removeBut);
+
+                form.append(divEng);
+                form.append(divRus);
+                form.append(divIn);
+
+                div.append(form);
+                button.remove();
+            });
+            div.append(button);
+            div.append(buttonDel);
+            return div;
+        }
+
+        function reset() {
+            const form = document.forms["addWord"];
+            form.reset();
+        }
+
+        document.forms["addWord"].addEventListener("submit", e => {
+            e.preventDefault();
+            const form = document.forms["addWord"];
+            const EngName = form.elements["EngWord"].value;
+            const RusName = form.elements["RusWord"].value;
+
+            post(EngName, RusName);
+        })
+
+        const button = document.querySelector("button.backMain");
+        button.addEventListener("click", e => {
+            e.preventDefault();
+            window.location.href = "home.html";
+        })
+
+        get();
+
+    </script>
+</body>
+</html>

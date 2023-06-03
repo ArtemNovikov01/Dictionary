@@ -1,0 +1,71 @@
+{
+  "Version": 1,
+  "Hash": "GXTVEPzfrGRTmRW9DJzz4nJOhQEMoV95qosj4CiE+gA=",
+  "Source": "Dictionary",
+  "BasePath": "_content/Dictionary",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "Dictionary\\wwwroot",
+      "Source": "Dictionary",
+      "ContentRoot": "C:\\Users\\calag\\Desktop\\Код\\C#\\Dictionary\\Dictionary\\wwwroot\\",
+      "BasePath": "_content/Dictionary",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\calag\\Desktop\\Код\\C#\\Dictionary\\Dictionary\\wwwroot\\checkWord.html",
+      "SourceId": "Dictionary",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\calag\\Desktop\\Код\\C#\\Dictionary\\Dictionary\\wwwroot\\",
+      "BasePath": "_content/Dictionary",
+      "RelativePath": "checkWord.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\checkWord.html"
+    },
+    {
+      "Identity": "C:\\Users\\calag\\Desktop\\Код\\C#\\Dictionary\\Dictionary\\wwwroot\\dictionary.html",
+      "SourceId": "Dictionary",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\calag\\Desktop\\Код\\C#\\Dictionary\\Dictionary\\wwwroot\\",
+      "BasePath": "_content/Dictionary",
+      "RelativePath": "dictionary.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\dictionary.html"
+    },
+    {
+      "Identity": "C:\\Users\\calag\\Desktop\\Код\\C#\\Dictionary\\Dictionary\\wwwroot\\home.html",
+      "SourceId": "Dictionary",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\calag\\Desktop\\Код\\C#\\Dictionary\\Dictionary\\wwwroot\\",
+      "BasePath": "_content/Dictionary",
+      "RelativePath": "home.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\home.html"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\calag\\Desktop\\Код\\C#\\Dictionary\\Dictionary\\wwwroot\\checkWord.html",
+      "PackagePath": "staticwebassets\\checkWord.html"
+    },
+    {
+      "Id": "C:\\Users\\calag\\Desktop\\Код\\C#\\Dictionary\\Dictionary\\wwwroot\\dictionary.html",
+      "PackagePath": "staticwebassets\\dictionary.html"
+    },
+    {
+      "Id": "C:\\Users\\calag\\Desktop\\Код\\C#\\Dictionary\\Dictionary\\wwwroot\\home.html",
+      "PackagePath": "staticwebassets\\home.html"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.Dictionary.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.build.Dictionary.props",
+      "PackagePath": "build\\Dictionary.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildMultiTargeting.Dictionary.props",
+      "PackagePath": "buildMultiTargeting\\Dictionary.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildTransitive.Dictionary.props",
+      "PackagePath": "buildTransitive\\Dictionary.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
