@@ -3,26 +3,32 @@
 <head>
     <meta charset="utf-8" />
     <title>Словарь</title>
+    <link href="GeneralStyle.css" rel="stylesheet" />
+    <link href="ButtonStyle.css" rel="stylesheet" />
+    <link href="FormStyle.css" rel="stylesheet" />
 </head>
 <body>
-    <h1>Словарь</h1><br/>
-                    <form name="addWord">
-                        <lable>
-                            Слово на английском:
-                        </lable>
-                        <input name="IdWord" type="hidden" value="0"/>
+    <h1 class="namePageDictionary">Словарь</h1><br/>
+    <aside style="float:right; width:300px;">
+        <form  name="addWord">
+            <lable >
+                Слово на английском:
+            </lable><br/>
+            <input name="IdWord" type="hidden" value="0"/>
 
-                        <input name="EngWord" type="text" placeholder="english" autocomplete="off" required/>
+            <input class="addword" style="margin-top:25px;margin-bottom:25px" name="EngWord" type="text" placeholder="english" autocomplete="off" required /><br/>
 
-                        <lable>
-                            Слово на русском:
-                        </lable>
+            <lable>
+                Слово на русском:
+            </lable><br/>
 
-                        <input name="RusWord" type="text" placeholder="По-русски" autocomplete="off" required/>
-                            
-                            <input type="submit" value="Добавить"/>
-                    </form>
-    <button class="backMain">Вернуться на главную</button>
+            <input class="addword" style="margin-top: 25px; margin-bottom: 25px" name="RusWord" type="text" placeholder="По-русски" autocomplete="off" required />
+
+            <input class="backMain"type="submit" value="Добавить" />
+            <button class="backMain">Вернуться на главную</button>
+        </form>
+        </aside>
+    
     <script>
         async function get() {
             const response = await fetch("api/dictionary", {
@@ -99,15 +105,17 @@
 
         function row(word) {
             const div = document.createElement("div");
+            div.setAttribute("id", "word");
             div.setAttribute("class",word.engWord)
             const h2 = document.createElement("h4");
             h2.setAttribute("id", word.id);
-            var wordEnRu =word.id +") " + word.engWord + " - " + word.rusWord;
+            var wordEnRu = word.engWord + " - " + word.rusWord;
             h2.append(wordEnRu);
             div.append(h2);
 
             const buttonDel = document.createElement("button");
             buttonDel.append("Удалить");
+            buttonDel.setAttribute("class", "backMain")
             buttonDel.addEventListener("click", e => {
                 e.preventDefault();
                 del(word.id);
@@ -115,8 +123,10 @@
 
             const button = document.createElement("button");
             button.append("Редактировать")
+            button.setAttribute("class","backMain")
             button.addEventListener("click", e => {
                 e.preventDefault();
+                buttonDel.remove();
                 const form = document.createElement("form");
                 form.setAttribute("name", "editForm");
 
@@ -127,6 +137,8 @@
                 const lableEng = document.createElement("lable");
                 lableEng.append("English");
                 const inputEng = document.createElement("input")
+                inputEng.setAttribute("class", "edit");
+                inputEng.setAttribute("style","margin-left:23px")
                 inputEng.setAttribute("name", "EngWord");
                 inputEng.setAttribute("type", "text");
                 inputEng.setAttribute("autocomplete", "off");
@@ -134,12 +146,14 @@
                 const lableRus = document.createElement("lable");
                 lableRus.append("По-русски");
                 const inputRus = document.createElement("input");
+                inputRus.setAttribute("class", "edit");
                 inputRus.setAttribute("name", "RusWord");
                 inputRus.setAttribute("type", "text");
                 inputRus.setAttribute("autocomplete", "off");
 
                 const editBut = document.createElement("button");
                 editBut.append("Изменить");
+                editBut.setAttribute("class", "backMain")
                 editBut.addEventListener("click", e => {
                     e.preventDefault();
                     const form = document.forms["editForm"];
@@ -148,14 +162,17 @@
                     const RusWord = form.elements["RusWord"].value;
                     put(IdWord, EngWord, RusWord);
                     form.remove()
+                    div.append(buttonDel);
                 })
 
                 const removeBut = document.createElement("button");
                 removeBut.append("Отмена");
+                removeBut.setAttribute("class", "backMain")
                 removeBut.addEventListener("click", e => {
                     e.preventDefault();
                     div.append(button);
                     form.remove();
+                    div.append(buttonDel);
                 });
                 const divEng = document.createElement("div");
                 divEng.append(inputId);

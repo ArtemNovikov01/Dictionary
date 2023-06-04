@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "GXTVEPzfrGRTmRW9DJzz4nJOhQEMoV95qosj4CiE+gA=",
+  "Hash": "uUnNLsi9leR09fFnYkAX3BcXYW52sePVY1ZzO+B2qDE=",
   "Source": "Dictionary",
   "BasePath": "_content/Dictionary",
   "Mode": "Default",
@@ -16,6 +16,23 @@
     }
   ],
   "Assets": [
+    {
+      "Identity": "C:\\Users\\calag\\Desktop\\Код\\C#\\Dictionary\\Dictionary\\wwwroot\\ButtonStyle.css",
+      "SourceId": "Dictionary",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\calag\\Desktop\\Код\\C#\\Dictionary\\Dictionary\\wwwroot\\",
+      "BasePath": "_content/Dictionary",
+      "RelativePath": "ButtonStyle.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\ButtonStyle.css"
+    },
     {
       "Identity": "C:\\Users\\calag\\Desktop\\Код\\C#\\Dictionary\\Dictionary\\wwwroot\\checkWord.html",
       "SourceId": "Dictionary",
@@ -51,6 +68,23 @@
       "OriginalItemSpec": "wwwroot\\dictionary.html"
     },
     {
+      "Identity": "C:\\Users\\calag\\Desktop\\Код\\C#\\Dictionary\\Dictionary\\wwwroot\\FormStyle.css",
+      "SourceId": "Dictionary",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\calag\\Desktop\\Код\\C#\\Dictionary\\Dictionary\\wwwroot\\",
+      "BasePath": "_content/Dictionary",
+      "RelativePath": "FormStyle.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\FormStyle.css"
+    },
+    {
       "Identity": "C:\\Users\\calag\\Desktop\\Код\\C#\\Dictionary\\Dictionary\\wwwroot\\home.html",
       "SourceId": "Dictionary",
       "SourceType": "Discovered",
@@ -66,6 +100,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\home.html"
+    },
+    {
+      "Identity": "C:\\Users\\calag\\Desktop\\Код\\C#\\Dictionary\\Dictionary\\wwwroot\\Style.css",
+      "SourceId": "Dictionary",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\calag\\Desktop\\Код\\C#\\Dictionary\\Dictionary\\wwwroot\\",
+      "BasePath": "_content/Dictionary",
+      "RelativePath": "Style.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Style.css"
     }
   ]
 }

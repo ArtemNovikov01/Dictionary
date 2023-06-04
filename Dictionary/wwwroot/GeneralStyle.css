@@ -1,0 +1,32 @@
+﻿body {
+    background-color:dimgray;
+    color:black;
+}
+.Main {
+    
+    margin-top: 150px;
+    margin-left: 700px;
+}
+.subMain {
+    margin-top: 40px;
+    margin-left: 600px;
+}
+.descriptionButton {
+    margin-top: 40px;
+    margin-left: 550px;
+}
+.description{
+    margin-top: 40px;
+    margin-left: 550px;
+}
+.button {
+    margin-top: 0px;
+    margin-left: 550px;
+}
+.namePageDictionary {
+    margin-top: 100px;
+    margin-left: 680px;
+}
+#word{
+    margin-left: 70px;
+}

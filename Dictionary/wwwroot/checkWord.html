@@ -3,10 +3,13 @@
 <head>
     <meta charset="utf-8" />
     <title>Проверка</title>
+    <link href="GeneralStyle.css" rel="stylesheet" />
+    <link href="ButtonStyle.css" rel="stylesheet" />
+    <link href="FormStyle.css" rel="stylesheet" />
 </head>
 <body>
     <div class="head">
-    <h1 >Выберете какие слова нужно проверить:</h1>
+    <h1 id="mainTitle" >Выберете какие слова нужно проверить:</h1>
      </div>
     <script>
         async function get() {
@@ -22,6 +25,7 @@
 
                 const button = document.createElement("button");
                 button.append("Вернуться на главную");
+                button.setAttribute("class", "backMain")
                 button.addEventListener("click", e => {
                     e.preventDefault();
                     window.location.href = "home.html";
@@ -55,20 +59,45 @@
             if (response.ok === true) {
                 const words = await response.json();
                 const rows = document.querySelector("body");
-                const form = document.forms["form"];
-                form.remove();
-                const but = document.querySelectorAll("button");
-                but.forEach(b => b.remove());
-                rows.append(rowCheck(words));
 
-                const button = document.createElement("button");
-                button.append("Вернуться на главную");
-                button.setAttribute("class","come")
-                button.addEventListener("click", e => {
+                if (words.length === 0) {
+                    const head = document.querySelector("div");
+                    head.remove();
+                    const div = document.createElement("div");
+                    const h1 = document.createElement("h1");
+                    h1.append("Выберете хотя бы одно слово");
+                    div.append(h1);
+                    rows.append(div);
+                    const form = document.forms["form"];
+                    form.remove();
+                    const but = document.querySelectorAll("button");
+                    but.forEach(b => b.remove());
+                    const button = document.createElement("button");
+                    button.append("Вернуться на главную");
+                    button.setAttribute("class", "come")
+                    button.addEventListener("click", e => {
+                        e.preventDefault();
+                        window.location.href = "home.html";
+                    })
+                    rows.append(button);
+                }
+                else { 
+                    const form = document.forms["form"];
+                    form.remove();
+                    const but = document.querySelectorAll("button");
+                    but.forEach(b => b.remove());
+                    rows.append(rowCheck(words));
+
+                    const button = document.createElement("button");
+                    button.append("Вернуться на главную");
+                    button.setAttribute("class","come")
+                    button.addEventListener("click", e => {
                     e.preventDefault();
                     window.location.href = "home.html";
                 })
-                rows.append(button);
+                    rows.append(button);
+                }
+                
             }
 
         }
@@ -90,21 +119,24 @@
 
                     const come = document.querySelector("button.come");
                     come.remove();
-
+                    
                     const div = document.createElement("div");
                     const h1 = document.createElement("h1");
-                    h1.append("Вы допустили ошибки в следующих словах:");
-                    div.append(h1);
+                        h1.append("Вы допустили ошибки в следующих словах:");
+                        div.append(h1);
+                        const form = document.forms["checkform"];
+                        form.remove();
+                        rows.append(div);
 
-                    const form = document.forms["checkform"];
-                    form.remove();
-                    rows.append(div);
+                        words.forEach(word =>
+                            rows.append(finalCheck(word)));
+                    
 
-                    words.forEach(word =>
-                        rows.append(finalCheck(word)));
+                    
 
                     const button = document.createElement("button");
                     button.append("Пройти проверку занаво");
+                    button.setAttribute("class", "button")
 
                     button.addEventListener("click", e => {
                         e.preventDefault();
@@ -122,7 +154,6 @@
                     rows.append(button);
 
                 }
-
                 else {
                     var head = document.querySelector("div");
                     head.remove();
@@ -142,6 +173,7 @@
 
                     const backMain = document.createElement("button");
                     backMain.append("Вернуться на главную");
+                    backMain.setAttribute("class", "come")
                     backMain.addEventListener("click", e => {
                         e.preventDefault();
                         window.location.href = "home.html";
@@ -176,6 +208,7 @@
             words.forEach(word => {
 
                 const inputE = document.createElement("input");
+                inputE.setAttribute("id", "check");
                 inputE.setAttribute("type", "text");
                 inputE.setAttribute("name", word.engWord);
 
@@ -190,10 +223,10 @@
             })
             const button = document.createElement("button");
             button.append("Проверить");
+            button.setAttribute("class", "button")
             button.addEventListener("click", e => {
                 e.preventDefault();
                 words.forEach(word => {
-                
                     let Id = word.id;
                     let EngWord = form.elements[word.engWord].value;
                     var serializ = Id + ")" + EngWord;
@@ -216,6 +249,7 @@
             
             const inputAll = document.createElement("button");
             inputAll.append("Выбрать все")
+            inputAll.setAttribute("class", "button")
             inputAll.addEventListener("click", e => {
                 e.preventDefault();
                 words.forEach(word => {
@@ -234,10 +268,16 @@
                     input.setAttribute("type", "checkbox");
                     input.setAttribute("value", word.id);
                     input.addEventListener("click", e => {
-                        set.add(word.id);
-                        e.target.checked;
-                        
-                    })
+                        if (input.checked) {
+                            input.style.visibility = 'visible';
+                            p.setAttribute("style", "color:red;");
+                            set.add(word.id);
+                        } else {
+                            input.style.visibility = "visibility";
+                            p.setAttribute("style", "color:black");
+                            set.delete(word.id);
+                        }
+                    });
                     p.append(input);
                     p.append(word.id + ") " + word.engWord);
                     form.append(p);
@@ -245,6 +285,7 @@
             
             const button = document.createElement("button");
             button.append("Выбрать");
+            button.setAttribute("class", "button")
                 button.addEventListener("click", e => {
                     e.preventDefault();
                     const array = Array.from(set);

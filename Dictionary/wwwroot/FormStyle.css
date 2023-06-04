@@ -1,19 +1,12 @@
-﻿
-.eng {
-    background-color:slategrey; /* Цвет фона */
+﻿.addword {
+    background-color: brown;
     color: black;
 }
-
-.rus {
-    background-color: slategrey; /* Цвет фона */
+.edit {
+    background-color: brown;
     color: black;
 }
-
-.elemForm {
-    background-color: slategrey; /* Цвет фона */
-    color: black;
-}
-.input {
-    background-color: slategrey; /* Цвет фона */
+#check {
+    background-color: brown;
     color: black;
 }

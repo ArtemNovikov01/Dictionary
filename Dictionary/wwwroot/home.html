@@ -3,10 +3,33 @@
 <head>
     <meta charset="utf-8" />
     <title>Главная</title>
+    <link href="GeneralStyle.css" rel="stylesheet" />
+    <link href="ButtonStyle.css" rel="stylesheet" />
 </head>
 <body>
-    <h1>Главная</h1>
-    <a href="dictionary.html">Словарь</a><br/>
-        <a href="checkWord.html">Проверить слова</a>
+    <main>
+        <h1 class="Main">Словарь онлайн</h1>
+        <h3 class="subMain">Для продолжения выберете дальнейшие действия:</h3>
+
+        <h4 class="descriptionButton">Перейти к доступным словам</h4>
+        <p class="description">В данном меню вы сможете добалять, <br />удалять и редактировать уже существующие слова</p>
+        <button id="dicti" class="button">Перейти</button>
+
+        <h4 class="descriptionButton">Перейти к проверки</h4>
+        <p class="description">В данном меню вы сможете себя <br />проверить на знание выученных слов</p>
+        <button id="check" class="button">Перейти</button>
+    </main>   
+
+    <script>
+        document.querySelector("button#dicti").addEventListener("click", e => {
+            e.preventDefault();
+            window.location.href = "dictionary.html";
+        })
+
+        document.querySelector("button#check").addEventListener("click", e => {
+            e.preventDefault();
+            window.location.href = "checkWord.html";
+        })
+    </script>
 </body>
 </html>

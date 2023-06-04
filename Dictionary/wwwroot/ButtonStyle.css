@@ -1,118 +1,50 @@
-﻿.check {
+﻿.button {
+    top: 50%;
     background-color: black;
+    color: #fff;
     border: none;
     border-radius: 10px;
-    box-shadow: 0px 0px 2px 2px rgb(255, 0, 110);
-    color: white
+    box-shadow: 0px 0px 2px 2px rgb(255, 0, 220);
 }
-
-    .check:hover {
-        background-color: rgb(255, 0, 110);
-        transition: 0.4s;
+    .button:hover {
+        background-color: rgb(255, 0, 220);
+        transition: 0.3s;
+    }
+    .button:active {
+        background-color: yellow;
     }
 
-    .check:active {
-        background-color: limegreen;
-    }
-
-.dic {
+.backMain {
+    top: 50%;
     background-color: black;
+    color: #fff;
     border: none;
     border-radius: 10px;
-    box-shadow: 0px 0px 2px 2px rgb(255, 0, 110);
-    color: white
+    box-shadow: 0px 0px 2px 2px rgb(255, 0, 220);
 }
 
-    .dic:hover {
-        background-color: rgb(255, 0, 110);
-        transition: 0.4s;
+    .backMain:hover {
+        background-color: rgb(255, 0, 220);
+        transition: 0.3s;
     }
 
-    .dic:active {
-        background-color: limegreen;
+    .backMain:active {
+        background-color: yellow;
     }
-
-.back {
+.come {
+    top: 50%;
     background-color: black;
+    color: #fff;
     border: none;
     border-radius: 10px;
-    box-shadow: 0px 0px 2px 2px rgb(255, 0, 110);
-    color: white
+    box-shadow: 0px 0px 2px 2px rgb(255, 0, 220);
 }
 
-    .back:hover {
-        background-color: rgb(255, 0, 110);
-        transition: 0.4s;
+    .come:hover {
+        background-color: rgb(255, 0, 220);
+        transition: 0.3s;
     }
 
-    .back:active {
-        background-color: limegreen;
-    }
-
-.clickAll {
-    background-color: black;
-    border: none;
-    border-radius: 10px;
-    box-shadow: 0px 0px 2px 2px rgb(255, 0, 110);
-    color: white
-}
-
-    .clickAll:hover {
-        background-color: rgb(255, 0, 110);
-        transition: 0.4s;
-    }
-
-    .clickAll:active {
-        background-color: limegreen;
-    }
-
-.again {
-    background-color: black;
-    border: none;
-    border-radius: 10px;
-    box-shadow: 0px 0px 2px 2px rgb(255, 0, 110);
-    color: white
-}
-
-    .again:hover {
-        background-color: rgb(255, 0, 110);
-        transition: 0.4s;
-    }
-
-    .again:active {
-        background-color: limegreen;
-    }
-
-.del {
-    background-color: black;
-    border: none;
-    border-radius: 10px;
-    box-shadow: 0px 0px 2px 2px rgb(255, 0, 110);
-    color: white
-}
-
-    .del:hover {
-        background-color: rgb(255, 0, 110);
-        transition: 0.4s;
-    }
-
-    .del:active {
-        background-color: limegreen;
-    }
-
-.edit {
-    background-color: black;
-    border: none;
-    border-radius: 10px;
-    box-shadow: 0px 0px 2px 2px rgb(255, 0, 110);
-    color: white
-}
-
-    .edit:hover {
-        background-color: rgb(255, 0, 110);
-        transition: 0.4s;
-    }
-
-    .edit:active {
-        background-color: limegreen;
+    .come:active {
+        background-color: yellow;
     }

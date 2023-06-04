@@ -1,6 +1,18 @@
 {
   "Files": [
     {
+      "Id": "C:\\Users\\calag\\Desktop\\Код\\C#\\Dictionary\\Dictionary\\wwwroot\\ButtonStyle.css",
+      "PackagePath": "staticwebassets\\ButtonStyle.css"
+    },
+    {
+      "Id": "C:\\Users\\calag\\Desktop\\Код\\C#\\Dictionary\\Dictionary\\wwwroot\\FormStyle.css",
+      "PackagePath": "staticwebassets\\FormStyle.css"
+    },
+    {
+      "Id": "C:\\Users\\calag\\Desktop\\Код\\C#\\Dictionary\\Dictionary\\wwwroot\\Style.css",
+      "PackagePath": "staticwebassets\\Style.css"
+    },
+    {
       "Id": "C:\\Users\\calag\\Desktop\\Код\\C#\\Dictionary\\Dictionary\\wwwroot\\checkWord.html",
       "PackagePath": "staticwebassets\\checkWord.html"
     },
