@@ -1,0 +1,118 @@
+﻿.check {
+    background-color: black;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 0px 2px 2px rgb(255, 0, 110);
+    color: white
+}
+
+    .check:hover {
+        background-color: rgb(255, 0, 110);
+        transition: 0.4s;
+    }
+
+    .check:active {
+        background-color: limegreen;
+    }
+
+.dic {
+    background-color: black;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 0px 2px 2px rgb(255, 0, 110);
+    color: white
+}
+
+    .dic:hover {
+        background-color: rgb(255, 0, 110);
+        transition: 0.4s;
+    }
+
+    .dic:active {
+        background-color: limegreen;
+    }
+
+.back {
+    background-color: black;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 0px 2px 2px rgb(255, 0, 110);
+    color: white
+}
+
+    .back:hover {
+        background-color: rgb(255, 0, 110);
+        transition: 0.4s;
+    }
+
+    .back:active {
+        background-color: limegreen;
+    }
+
+.clickAll {
+    background-color: black;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 0px 2px 2px rgb(255, 0, 110);
+    color: white
+}
+
+    .clickAll:hover {
+        background-color: rgb(255, 0, 110);
+        transition: 0.4s;
+    }
+
+    .clickAll:active {
+        background-color: limegreen;
+    }
+
+.again {
+    background-color: black;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 0px 2px 2px rgb(255, 0, 110);
+    color: white
+}
+
+    .again:hover {
+        background-color: rgb(255, 0, 110);
+        transition: 0.4s;
+    }
+
+    .again:active {
+        background-color: limegreen;
+    }
+
+.del {
+    background-color: black;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 0px 2px 2px rgb(255, 0, 110);
+    color: white
+}
+
+    .del:hover {
+        background-color: rgb(255, 0, 110);
+        transition: 0.4s;
+    }
+
+    .del:active {
+        background-color: limegreen;
+    }
+
+.edit {
+    background-color: black;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 0px 2px 2px rgb(255, 0, 110);
+    color: white
+}
+
+    .edit:hover {
+        background-color: rgb(255, 0, 110);
+        transition: 0.4s;
+    }
+
+    .edit:active {
+        background-color: limegreen;
+    }
